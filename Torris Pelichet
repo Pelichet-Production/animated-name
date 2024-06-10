@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Name</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #282c34;
+            color: #61dafb;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        #animated-name {
+            font-size: 3rem;
+            display: inline-block;
+        }
+
+        .letter {
+            opacity: 0;
+            display: inline-block;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="animated-name"></h1>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const name = "Torris Pelichet";
+            const nameContainer = document.getElementById('animated-name');
+            
+            name.split('').forEach((char, index) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.classList.add('letter');
+                span.style.transitionDelay = `${index * 0.1}s`;
+                nameContainer.appendChild(span);
+            });
+
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach(letter => {
+                letter.style.opacity = 1;
+            });
+        });
+    </script>
+</body>
+</html>
